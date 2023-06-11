@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<title>Secure File Storage</title>
+<style type="text/css">
+body{
+	background: rgba(0,0,0,0.77) url('../static/img/background.png');
+	color: whitesmoke;
+	background-size: cover;
+	background-repeat: no-repeat;
+  background-blend-mode: darken;
+}
+
+.file {
+  display: none;
+}
+.file-name {
+  position: relative;
+  overflow: hidden;
+  line-height: 20px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 15px;
+  vertical-align: middle;
+  width: 300px;
+  border: 2px solid #dbdbdb;
+  border-radius: 0;
+  height: 30px;
+}
+.btn {
+  border: none;
+  border-radius: 8px;
+  width: auto;
+  box-sizing: border-box;
+  padding: 2px 10px;
+  transition: all 0.6s;
+  color: #FFF;
+  font-size: 15px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  margin-left: 1rem;
+  background-color: #000;
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+</style>
+</head>
+<body > 
+  <div class="mt-5">
+    <center> <h1> Secure File Storage </h1><br> 
+      <h2>Demonstration of Secure File Storage using Hybrid Cryptography</h2> <br>
+            
+    <form action="/data/" method=post enctype=multipart/form-data>
+              <!-- <center><input type=file name=file>   Click to upload your file.</center> -->
+            <center> 
+              <div class="d-flex justify-content-center wrapper align-items-center">
+            <input type="file" name="file" id="file" class="file">
+            <div class="d-flex">
+              <input type="text" name="file-name" id="file-name" class="file-name">
+              <input type="button" class="btn btn-light bunton" value="select">
+            </div>
+            </div>
+          </center>
+               <br><input button class="glow-on-hover btn" type="submit" value="Upload & Process">
+    </form>
+    </center>
+    <footer><h4><center><br><br><br><br><br><br><br><br><br><br><br><br><br><br>BY MINI PROJECT GROUP A12</h4> 
+            <br></footer></center>
+  </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script>
+
+$(document).ready(function() {
+  $('.bunton').on('click', function() {
+    $('.file').trigger('click');
+  });
+
+  $('.file').on('change', function() {
+    var fileName = $(this)[0].files[0].name;    
+    $('#file-name').val(fileName);
+  });
+})
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</html>
